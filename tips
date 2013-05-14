@@ -1,0 +1,41 @@
+1.使用ant在tomcat上发布时，如果是tomcat7,则需要把bin目录下的tomcat-juli.jar加入项目lib，
+另外，manager url 为/manager/text，用户需要有manager-script权限
+
+2.在web项目中添加jstl时，需要jstl和standard两个jar包
+
+3.el表达式判断是否为空，并设置默认值：
+${empty your_obj_name ? "if_is_empty" : "if_not_empty"}
+your_obj_name可以为列表也可以为对象
+
+4.jquery选择select，radio，checkbox：
+<html>
+    <select name="select">
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+    </select>
+
+    <input type="radio" name=radio value="radio1" />radio1
+    <input type="radio" name=radio value="radio2" />radio2
+
+    <input type="checkbox" name="checkbox" value="checkbox1" />checkbox1
+    <input type="checkbox" name="checkbox" value="checkbox2" />checkbox2
+</html>
+
+<script>
+    $("select[name='select']).val("option1");
+    $("input[name='radio']).val(["radio1"]);
+    $("input[name='checkbox']).val(["checkbox1"]);
+</script>
+
+5.css页面中的开头@charset后面必须有分号，否则会导致地一个央视无法使用。
+
+6.在html和jsp页面中/代表了服务器的根，比如一个服务器域名为www.example.com，上面有两个网站www.example.com/website1和www.example.com/website2
+那么/代表这www.example.com
+在struts，jfinal的代码中，/代表了这个网站的根,比如www.example.com/website1
+而在sitemesh中，页面标签上的/与上面相同，但是decorators.xml的根是在web.xml中配置的decorators目录，默认为decorators/
+
+7.使用了sitemesh之后就不要使用jsp:include，否则会出错，但可以使用<%@ include %>
+
+8.jfinal会对request中的属性进行处理，可以使用JSONKit将其转为json数据。
+
+9.url传参时，中文乱码问题，可以通过构造一个filter，将url中的参数转换为utf8。

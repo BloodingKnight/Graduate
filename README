@@ -1,0 +1,44 @@
+This file was created by IntelliJ IDEA 11.1.3 for binding GitHub repository
+
+Warehouse管理模块
+    管理仓库：列出所有，添加，修改删除
+|-->com.nightknight.graduate
+    |-->model.Warehouse
+    |-->controller.WarehouseController
+    |-->validator.WarehouseValidator
+|-->web/warehouse/warehouses.jsp
+    |-->列出所有的仓库信息
+    |-->点击添加按钮会出现一个表单
+    |-->点击编辑按钮会出现一个表单，里面填充有所编辑的仓库的信息
+
+Device管理模块
+    管理设备
+|-->com.nightknight.graduate
+    |-->model.Device
+    |-->controller.DeviceController
+|-->web/device/
+    |-->devices.jsp
+        |-->列出所有的仓库信息
+        |-->点击添加按钮会跳转到add.jsp页面
+        |-->点击编辑按钮会跳转到edit.jsp页面
+        |-->点击设备名称跳转到设备详细信息页面
+    |-->add.jsp
+        |-->添加设备
+        |-->基本信息：设备名称，设备简介，设备所属仓库（为一个select，显示出所有的仓库）
+        |-->详细信息：设备所含检查项（一个多项选择select，列出所有的检查项），设备所有检查计划（只有一个添加按钮，进入计划添加页面）
+
+
+rbac:
+    user:       用户包含登录信息，如果需要，可以有自己的操作，属于一定的组，并继承组的操作
+    group:      组，包含自己的操作，可有继承关系，继承父组的操作
+    operator:   操作，权限的具体体现
+
+    user *---* group
+      *|       *|
+       |        |
+       | *      |*
+       |--- operator
+
+    示例：
+    user： admin1, admin2, admin3, checker1, checker2, checker3
+    group：warehouse_admin, device_admin,

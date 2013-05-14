@@ -1,0 +1,245 @@
+<?xml version="1.0" ?>
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="Graduate" default="start" basedir=".">
+
+	<!-- 会用到的一些变量 -->
+	<!-- 一些文件位置 -->
+	<property name="src.dir" location="src" />
+	<property name="build.dir" location="build" />
+	<property name="build.classes.dir" location="build/classes" />
+	<property name="dist.dir" location="dist" />
+	<property name="web.dir" location="web" />
+	<property name="lib.dir" location="lib" />
+	<property name="reports.dir" location="doc" />
+	<property name="tomcat.install.dir" location="${user.home}/Develope/apache-tomcat-7.0.39" />
+	<property name="fo.home" location="${user.home}/Develope/fo" />
+
+	<!-- 项目属性 -->
+	<property name="project.name" value="Graduate" />
+	<property name="project.version" value="1.0" />
+	<property name="tomcat.manager.url" value="http://localhost:8080/manager/text" />
+	<property name="tomcat.manager.username" value="admin" />
+	<property name="tomcat.manager.password" value="admin" />
+	<property name="context.path" value="Graduate" />
+
+	<!-- jar包 -->
+	<property name="mysql.jar" value="${lib.dir}/mysql-connector-java-5.1.6-bin.jar" />
+	<property name="schemaSpy.jar" value="${lib.dir}/schemaSpy_5.0.0.jar" />
+	<property name="UmlGraph.class" value="org.umlgraph.doclet.UmlGraphDoc" />
+	<property name="UmlGraph.jar" value="${lib.dir}/UMLGraph.jar" />
+	<property name="grand.jar" value="${lib.dir}/grand-1.8.jar" />
+
+	<!-- classpath -->
+	<path id="project.classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	<path id="catalina.jar">
+		<pathelement location="${tomcat.install.dir}/lib/catalina-ant.jar" />
+		<pathelement location="${tomcat.install.dir}/lib/tomcat-coyote.jar" />
+		<pathelement location="${tomcat.install.dir}/lib/tomcat-util.jar" />
+		<pathelement location="${tomcat.install.dir}/bin/tomcat-juli.jar" />
+	</path>
+
+	<taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask">
+		<classpath refid="catalina.jar" />
+	</taskdef>
+
+	<taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask">
+		<classpath refid="catalina.jar" />
+	</taskdef>
+
+	<taskdef name="reload" classname="org.apache.catalina.ant.ReloadTask">
+		<classpath refid="catalina.jar" />
+	</taskdef>
+
+	<taskdef name="list" classname="org.apache.catalina.ant.ListTask">
+		<classpath refid="catalina.jar" />
+	</taskdef>
+
+	<taskdef name="start" classname="org.apache.catalina.ant.StartTask">
+		<classpath refid="catalina.jar" />
+	</taskdef>
+
+	<taskdef name="stop" classname="org.apache.catalina.ant.StopTask">
+		<classpath refid="catalina.jar" />
+	</taskdef>
+
+	<target name="init">
+		<mkdir dir="build/classes" />
+		<mkdir dir="dist" />
+	</target>
+
+	<!-- 解析包依赖 -->
+	<target name="resolve" description="Retrieve dependencies with ivy">
+		<echo>Nothing to be done</echo>
+		<!-- ivy:retrieve / -->
+	</target>
+
+	<target name="compile" depends="init, resolve" description="Compile the project">
+		<javac srcdir="src" destdir="build/classes" includeantruntime="false">
+			<classpath refid="project.classpath" />
+		</javac>
+	</target>
+
+	<!-- 将程序打包成war格式 -->
+	<target name="war" depends="compile" description="Package the web project as a WAR file">
+		<copy todir="${web.dir}/WEB-INF">
+			<fileset dir="${src.dir}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<war destfile="${dist.dir}/${project.name}.war"
+				webxml="${web.dir}/WEB-INF/web.xml" >
+			<fileset dir="${web.dir}" />
+			<classes dir="${build.classes.dir}" />
+			<lib dir="${lib.dir}">
+				<include name="*.jar" />
+			</lib>
+		</war>
+	</target>
+
+	<!-- 将做好的程序发布到tomcat中去 -->
+	<target name="deploy" depends="war" description="Deploy the project">
+		<deploy url="${tomcat.manager.url}" username="${tomcat.manager.username}"
+			password="${tomcat.manager.password}" path="/${context.path}" 
+			war="file:${dist.dir}/${project.name}.war" update="true" />
+	</target>
+
+	<target name="undeploy" description="Undeploy the project">
+		<undeploy url="${tomcat.manager.url}" username="${tomcat.manager.username}"
+			password="${tomcat.manager.password}" path="/${context.path}" />
+	</target>
+
+	<target name="list" description="List the deployed projects">
+		<list url="${tomcat.manager.url}" username="${tomcat.manager.username}"
+			password="${tomcat.manager.password}" />
+	</target>
+
+	<target name="start" depends="deploy" description="Start the deployed projects">
+		<start url="${tomcat.manager.url}" username="${tomcat.manager.username}"
+			password="${tomcat.manager.password}" path="/${context.path}" />
+	</target>
+
+	<target name="stop" description="Stop the deployed projects">
+		<stop url="${tomcat.manager.url}" username="${tomcat.manager.username}"
+			password="${tomcat.manager.password}" path="/${context.path}" />
+	</target>
+
+	<!-- 运行项目 -->
+	<target name="run" depends="deploy" description="Run the project">
+		<exec executable="${tomcat.install.dir}/bin/shutdown.sh" />
+		<exec executable="${tomcat.install.dir}/bin/startup.sh" />
+	</target>
+
+	<!-- 生成UML图 -->
+	<target name="uml" description="Create the UML Diagram">
+		<javadoc sourcepath="${src.dir}" destdir="${reports.dir}/uml"
+			classpathref="project.classpath" access="private"
+		   	encoding="utf-8" charset="utf-8" docencoding="utf-8" locale="en_US">
+			<doclet name="${UmlGraph.class}" path="${lib.dir}/UmlGraph.jar">
+				<param name="-d" value="${reports.dir}/uml" />
+				<param name="-attributes" />
+				<param name="-enumerations" />
+				<param name="-enumconstants" />
+				<param name="-operations" />
+				<param name="-qualify" />
+				<param name="-types" />
+				<param name="-visibility" />
+				<param name="-outputencoding" value="UTF-8" />
+			</doclet>
+		</javadoc>
+		<apply executable="dot" dest="${reports.dir}/uml" parallel="false">
+			<arg value="-Tpng" />
+			<arg value="-o" />
+			<targetfile />
+			<srcfile />
+			<fileset dir="${reports.dir}/uml" includes="*.dot" />
+			<mapper type="glob" from="*.dot" to="*.png" />
+		</apply>
+	</target>
+
+	<!-- 生成ER图 -->
+	<target name="erd" description="Create the ER-Diagrams from the database">
+		<java jar="${schemaSpy.jar}"
+			output="${reports.dir}/output.log"
+			error="${reports.dir}/error.log"
+			fork="true">
+			<arg line="-t mysql" />
+			<arg line="-host localhost" />
+			<arg line="-port 3306" />
+			<arg line="-db graduate" />
+			<arg line="-u root" />
+			<arg line="-p root" />
+			<arg line="-cp ${mysql.jar}" />
+			<arg line="-o ${reports.dir}/erd" />
+		</java>
+	</target>
+
+	<!-- 生成ant目标图 -->
+	<target name="ant-diagram" description="Create a diagram to describe the targets of ant">
+		<property name="file.type" value="pdf" />
+		<typedef resource="net/ggtools/grand/antlib.xml" classpath="${grand.jar}" />
+		<grand output="build.dot" buildfile="${basedir}/build.xml" />
+		<exec executable="dot">
+			<arg line="-T${file.type} -Gsize=11.69,8.27 -Grotate=90 -obuild.${file.type} build.dot" />
+		</exec>
+	</target>
+
+	<!-- 生成项目文档 -->
+	<target name="generate-doxygen" description="Generate the doxygen document for the project">
+		<taskdef name="doxygen" classname="org.doxygen.tools.DoxygenTask"
+		   	classpath="${lib.dir}/ant_doxygen.jar" /> 
+  		<doxygen> 
+			<property name="PROJECT_NAME" value="Graduate" />
+  			<property name="INPUT" value="${src.dir}" /> 
+			<property name="OUTPUT_DIRECTORY" value="${reports.dir}/doxygen" /> 
+  			<property name="RECURSIVE" value="yes" /> 
+  			<property name="HAVE_DOT" value="yes" /> 
+  			<property name="UML_LOOK" value="yes" /> 
+  			<property name="CLASS_GRAPH" value="yes" /> 
+  			<property name="COLLABOBRATION_GRAPH" value="yes" /> 
+  			<property name="GROUP_GRAPHS" value="yes" /> 
+  			<property name="DIRECTORY_GRAPH" value="yes" /> 
+  			<property name="SOURCE_BROWSER" value="yes" /> 
+  		</doxygen> 
+ 	</target>
+
+    <!-- TODO 写好用户文档 -->
+	<!-- 用户文档 -->
+	<!--<target name="pdf" depends="init" description="Generates PDF files from DocBook XML"> -->
+  		<!--<property name="fo.stylesheet" value="${docbook.xsl.dir}/fo/docbook.xsl" /> -->
+  		<!--<xslt style="${fo.stylesheet}" extension=".fo" basedir="${src.dir}" destdir="${fo.dir}"> -->
+    			<!--<classpath refid="xalan.classpath" /> -->
+    			<!--<include name="${guide}.xml" /> -->
+  		<!--</xslt>-->
+  		<!--<taskdef name="fop" classname="org.apache.fop.tools.anttasks.Fop"> -->
+    			<!--<classpath> -->
+      			<!--<fileset dir="${fop.home}/lib"> -->
+        				<!--<include name="*.jar" /> -->
+      			<!--</fileset> -->
+      			<!--<fileset dir="${fop.home}/build"> -->
+        				<!--<include name="fop.jar" /> -->
+        				<!--<include name="fop-hyph.jar" /> -->
+      			<!--</fileset> -->
+    			<!--</classpath> -->
+  		<!--</taskdef> -->
+  		<!--<fop format="application/pdf" fofile="${fo.dir}/${guide}.fo" -->
+    			<!--outfile="${doc.dir}/${guide}.pdf" /> -->
+ 	<!--</target> -->
+
+	<!-- 清理生成的文件 -->
+	<target name="clean" description="Deletes generated directories">
+		<delete dir="build" />
+		<delete dir="dist" />
+	</target>
+
+	<!-- 清理生成的文档 -->
+	<target name="clean-doc" description="Deletes generated doc directories">
+		<delete dir="${reports.dir}/erd" />
+		<delete dir="${reports.dir}/uml" />
+		<delete dir="${reports.dir}/pdf" />
+		<delete dir="${reports.dir}/ant" />
+		<delete dir="${reports.dir}/api" />
+	</target>
+</project>

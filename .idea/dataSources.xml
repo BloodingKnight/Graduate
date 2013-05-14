@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3905756495">
+    <data-source source="LOCAL" name="graduate" product="MySQL" version="5.5.25" jdbc-version="3.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.6 ( Revision: ${svn.Revision} )" uuid="f0b94732-29d8-4719-a669-6b8d26917987">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/graduate</jdbc-url>
+      <user-name>root</user-name>
+      <user-password>dfd8dfc5dfc5dfde</user-password>
+      <schema-pattern>graduate.*</schema-pattern>
+      <default-schemas>graduate.*</default-schemas>
+      <default-dialect>MySQL</default-dialect>
+      <libraries>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/jstl-1.2.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/standard.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/UmlGraph.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/grand-1.8.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/ant_doxygen.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/druid-0.2.6.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/c3p0-0.9.1.2.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/log4j-1.2.16.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/sitemesh-2.4.2.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/schemaSpy_5.0.0.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/slf4j-api-1.5.8.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/slf4j-jdk14-1.5.8.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/ehcache-core-2.5.2.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/jfinal-bin-for-jdk1.5-1.2.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/jfinal-ext-1.2-b20121220-1.6.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.6-bin.jar!/</url>
+        </library>
+      </libraries>
+    </data-source>
+    <console-mapping uuid="f0b94732-29d8-4719-a669-6b8d26917987" cfg="Default" />
+  </component>
+</project>
+

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="graduate" product="MySQL" version="5.5.25" jdbc-version="3.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.6 ( Revision: ${svn.Revision} )" uuid="f0b94732-29d8-4719-a669-6b8d26917987">
+    <extra-name-characters>#@</extra-name-characters>
+    <identifier-quote-string>`</identifier-quote-string>
+    <synchronize>true</synchronize>
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://localhost:3306/graduate</jdbc-url>
+    <user-name>root</user-name>
+    <user-password>dfd8dfc5dfc5dfde</user-password>
+    <schema-pattern>graduate.*</schema-pattern>
+    <default-schemas>graduate.*</default-schemas>
+    <default-dialect>MySQL</default-dialect>
+    <libraries>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/jstl-1.2.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/standard.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/UmlGraph.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/grand-1.8.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/ant_doxygen.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/druid-0.2.6.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/c3p0-0.9.1.2.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/log4j-1.2.16.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/sitemesh-2.4.2.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/schemaSpy_5.0.0.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/slf4j-api-1.5.8.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/slf4j-jdk14-1.5.8.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/ehcache-core-2.5.2.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/jfinal-bin-for-jdk1.5-1.2.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/jfinal-ext-1.2-b20121220-1.6.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.6-bin.jar!/</url>
+      </library>
+    </libraries>
+    <schema name="" catalog="graduate"/>
+    <table name="device" schema="" catalog="graduate" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" length="40" precision="0" nullable="false" jdbcType="12"/>
+      <column name="info" sqlType="VARCHAR" length="90" precision="0" nullable="false" jdbcType="12"/>
+      <column name="w_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="device_warehouse" columns="w_id" ref-table="warehouse" ref-schema="" ref-catalog="graduate" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+      <exported-key name="device_inspect_d" table="device_inspect" schema="" catalog="graduate" columns="d_id"/>
+      <exported-key name="plan_device" table="plan" schema="" catalog="graduate" columns="d_id"/>
+    </table>
+    <table name="device_inspect" schema="" catalog="graduate" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="d_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="i_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="device_inspect_i" columns="i_id" ref-table="inspect" ref-schema="" ref-catalog="graduate" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="device_inspect_d" columns="d_id" ref-table="device" ref-schema="" ref-catalog="graduate" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="group" schema="" catalog="graduate" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" length="80" precision="0" nullable="false" jdbcType="12"/>
+      <column name="info" sqlType="VARCHAR" length="80" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="group_operator_g" table="group_operator" schema="" catalog="graduate" columns="g_id"/>
+      <exported-key name="group_userinfo_g" table="group_userinfo" schema="" catalog="graduate" columns="g_id"/>
+    </table>
+    <table name="group_operator" schema="" catalog="graduate" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="g_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="o_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="group_operator_g" columns="g_id" ref-table="group" ref-schema="" ref-catalog="graduate" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="group_operator_o" columns="o_id" ref-table="operator" ref-schema="" ref-catalog="graduate" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="group_userinfo" schema="" catalog="graduate" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="g_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="u_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="group_userinfo_g" columns="g_id" ref-table="group" ref-schema="" ref-catalog="graduate" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="group_userinfo_u" columns="u_id" ref-table="userinfo" ref-schema="" ref-catalog="graduate" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="inspect" schema="" catalog="graduate" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" length="40" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="device_inspect_i" table="device_inspect" schema="" catalog="graduate" columns="i_id"/>
+      <exported-key name="plan_inspect_i" table="plan_inspect" schema="" catalog="graduate" columns="i_id"/>
+      <exported-key name="result_inspect" table="result" schema="" catalog="graduate" columns="i_id"/>
+    </table>
+    <table name="operator" schema="" catalog="graduate" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="item" sqlType="VARCHAR" length="80" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="80" precision="0" nullable="false" jdbcType="12"/>
+      <column name="resource" sqlType="VARCHAR" length="80" precision="0" nullable="true" jdbcType="12"/>
+      <column name="operate" sqlType="VARCHAR" length="80" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="group_operator_o" table="group_operator" schema="" catalog="graduate" columns="o_id"/>
+      <exported-key name="userinfo_operator_o" table="userinfo_operator" schema="" catalog="graduate" columns="o_id"/>
+    </table>
+    <table name="plan" schema="" catalog="graduate" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" length="40" precision="0" nullable="false" jdbcType="12"/>
+      <column name="frequency" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="d_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="plan_device" columns="d_id" ref-table="device" ref-schema="" ref-catalog="graduate" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+      <exported-key name="plan_inspect_p" table="plan_inspect" schema="" catalog="graduate" columns="p_id"/>
+      <exported-key name="report_plan" table="report" schema="" catalog="graduate" columns="p_id"/>
+    </table>
+    <table name="plan_inspect" schema="" catalog="graduate" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="p_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="i_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="seat" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="plan_inspect_i" columns="i_id" ref-table="inspect" ref-schema="" ref-catalog="graduate" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="plan_inspect_p" columns="p_id" ref-table="plan" ref-schema="" ref-catalog="graduate" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="report" schema="" catalog="graduate" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="open" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="close" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="memo" sqlType="VARCHAR" length="500" precision="0" nullable="true" jdbcType="12"/>
+      <column name="p_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="report_plan" columns="p_id" ref-table="plan" ref-schema="" ref-catalog="graduate" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+      <exported-key name="result_report" table="result" schema="" catalog="graduate" columns="r_id"/>
+    </table>
+    <table name="result" schema="" catalog="graduate" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="info" sqlType="VARCHAR" length="80" precision="0" nullable="false" jdbcType="12"/>
+      <column name="norm" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="r_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="i_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="result_inspect" columns="i_id" ref-table="inspect" ref-schema="" ref-catalog="graduate" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="result_report" columns="r_id" ref-table="report" ref-schema="" ref-catalog="graduate" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="userinfo" schema="" catalog="graduate" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" length="80" precision="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" length="80" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="group_userinfo_u" table="group_userinfo" schema="" catalog="graduate" columns="u_id"/>
+      <exported-key name="userinfo_operator_u" table="userinfo_operator" schema="" catalog="graduate" columns="u_id"/>
+    </table>
+    <table name="userinfo_operator" schema="" catalog="graduate" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="u_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="o_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="userinfo_operator_u" columns="u_id" ref-table="userinfo" ref-schema="" ref-catalog="graduate" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="userinfo_operator_o" columns="o_id" ref-table="operator" ref-schema="" ref-catalog="graduate" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="warehouse" schema="" catalog="graduate" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" length="40" precision="0" nullable="false" jdbcType="12"/>
+      <column name="admin" sqlType="VARCHAR" length="40" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="device_warehouse" table="device" schema="" catalog="graduate" columns="w_id"/>
+    </table>
+  </data-source>
+</component>
