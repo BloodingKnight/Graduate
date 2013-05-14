@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>检查报告详细信息</title>
+    <link href="../css/common/style1.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="../js/tools/jquery-1.9.1.js"></script>
     <script type="text/javascript">
         $(function () {
@@ -50,12 +51,12 @@
 
     <fieldset>
         <legend>检查报告|<a href="next?r_id=${report.id }">进行下一步检查</a></legend>
-        <table id="results">
+        <table id="results" class="gridtable" style="width: 100%;">
             <tr>
-                <td>id</td>
-                <td>检查结果</td>
-                <td>检查项</td>
-                <td>备注</td>
+                <th>id</th>
+                <th>检查结果</th>
+                <th>检查项</th>
+                <th>备注</th>
             </tr>
             <c:forEach items="${report.results }" var="result">
                 <tr>

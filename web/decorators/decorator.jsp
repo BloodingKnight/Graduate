@@ -147,7 +147,12 @@ function loadRealname(){
 					    <td width="25"></td>
 					    <td width="50"><a id="btnchangetheme" onclick="window.location.reload();" style="cursor:hand">返回主页</a></td>
 					    <td width="25"></td>
-						<td width="100">欢迎您：<font id="realname">${sessionScope.loginUser.get("username") }</font></td>
+						<td width="100">欢迎您：<font id="realname">
+                            <a href='../modify?id=${sessionScope.loginUser.get("id") }'
+                               target="contextIframe" title="修改用户信息">
+						        ${sessionScope.loginUser.get("username") }
+                            </a>
+                        </font></td>
 						<td width="25"></td>
 						<td width="50"><a href="../logout" style="cursor:pointer;">注销</a></td>
 						<td width="25"></td>				
