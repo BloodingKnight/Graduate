@@ -184,7 +184,7 @@ function loadRealname(){
     	</div>
     	</div>
 	    <decorator:body />
-		<div class="panel bottom" id="main_bottom"><span style="font-family:Arial">©</span>&nbsp;&nbsp;2001-2010 版权所有 <a href="mailto://337223471@qq.com">胡勇刚</a> </div>
+		<div class="panel bottom" id="main_bottom"><span style="font-family:Arial">©</span>&nbsp;&nbsp;2013 版权所有 <a href="mailto://337223471@qq.com">胡勇刚</a> </div>
   </body>
 </html>
 <script type="text/javascript">

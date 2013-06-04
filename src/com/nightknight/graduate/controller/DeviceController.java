@@ -94,9 +94,11 @@ public class DeviceController extends Controller {
          */
         Integer inspects[] = getParaValuesToInt("inspects");
         Db.update("delete from device_inspect where d_id=?", device.get("id"));
-        for (int inspect : inspects) {
-            Record record = (new Record()).set("d_id", device.get("id")).set("i_id", inspect);
-            Db.save("device_inspect", record);
+        if (inspects != null) {
+            for (int inspect : inspects) {
+                Record record = (new Record()).set("d_id", device.get("id")).set("i_id", inspect);
+                Db.save("device_inspect", record);
+            }
         }
         device.update();
         forwardAction("/device/info?id=" + device.get("id"));

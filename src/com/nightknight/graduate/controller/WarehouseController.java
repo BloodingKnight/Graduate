@@ -6,6 +6,7 @@ import com.jfinal.aop.Before;
 import com.nightknight.graduate.interceptor.CommonInterceptor;
 import com.nightknight.graduate.interceptor.OperatorInterceptor;
 import com.nightknight.graduate.model.Warehouse;
+import com.nightknight.graduate.validator.WarehouseDeleteValidator;
 import com.nightknight.graduate.validator.WarehouseValidator;
 import org.apache.log4j.Logger;
 
@@ -29,6 +30,7 @@ public class WarehouseController extends Controller {
         forwardAction("/warehouse");
     }
 
+    @Before(WarehouseDeleteValidator.class)
 	public void delete() {
 		Warehouse.dao.deleteById(getParaToInt("id"));
 		forwardAction("/warehouse");

@@ -40,11 +40,15 @@ public class PlanController extends Controller {
         plan.save();
 
         Integer[] inspects = getParaValuesToInt("inspects");
-        for (int inspect : inspects) {
-            Record record = (new Record()).set("p_id", plan.get("id")).set("i_id", inspect);
-            Db.save("plan_inspect", record);
-        }
+        if (inspects != null) {
+            int i = 1;
+            for (int inspect : inspects) {
+                Record record = (new Record()).set("p_id", plan.get("id")).set("i_id", inspect).set("seat", i);
+                Db.save("plan_inspect", record);
+                ++i;
+            }
 
+        }
         forwardAction("/plan");
     }
 

@@ -21,6 +21,8 @@
 					$("#id").attr("value", params[0]);
 					$("#name").attr("value", params[1]);
 					$("#admin").attr("value", params[2]);
+					$("#address").attr("value", params[3]);
+					$("#phone").attr("value", params[4]);
 
                     $("form").attr("action", "update");
 					$("#form").show();
@@ -34,6 +36,8 @@
                 $("#id").attr("value", "");
                 $("#name").attr("value", "");
                 $("#admin").attr("value", "");
+                $("#address").attr("value", "");
+                $("#phone").attr("value", "");
                 $("form").attr("action", "save");
 				$("#form").show();
 			});
@@ -45,9 +49,16 @@
 	</script>
 </head>
 <body>
-    <div id="error">
-        <p>${nameMsg }</p>
-        <p>${adminMsg }</p>
+    <div id="error" style="color: red">
+        <c:if test="${not empty nameMsg}">
+            <p>${nameMsg}</p>
+        </c:if>
+        <c:if test="${not empty adminMsg}">
+            <p>${adminMsg}</p>
+        </c:if>
+        <c:if test="${not empty deleteError}">
+            <p>${deleteError}</p>
+        </c:if>
     </div>
     <div id="add">
         <a href="addWarehouse" id="addWarehouse">添加仓库</a>
@@ -59,6 +70,12 @@
                 <input id="name" type="text" name="warehouse.name" value="${warehouse.name}" />
                 <label for="admin">仓库管理员</label>
                 <input id="admin" type="text" name="warehouse.admin" value="${warehouse.admin}" />
+                <br />
+                <label for="address">仓库地址</label>
+                <input id="address" type="text" name="warehouse.address" value="${warehouse.address}" />
+                <label for="phone">仓库电话</label>
+                <input id="phone" type="text" name="warehouse.phone" value="${warehouse.phone}" />
+                <br />
                 <input id="submit" type="submit" value="提交" />
                 <input id="cancel" type="reset" value="取消" />
             </fieldset>
@@ -72,18 +89,20 @@
                 <th>id</th>
                 <th>仓库名称</th>
                 <th>仓库地址</th>
+                <th>仓库电话号码</th>
                 <th>仓库管理员</th>
             </tr>
             <c:forEach items="${warehouseList }" var="warehouse">
             <tr>
                 <td>
                     <a href="editWarehouse" class="editWarehouse"
-                        name="${warehouse.id}&${warehouse.name}&${warehouse.admin}">编辑</a>
+                        name="${warehouse.id}&${warehouse.name}&${warehouse.admin}&${warehouse.address}&${warehouse.phone}">编辑</a>
                     <a href="delete?id=${warehouse.id }" class="delete">删除</a>
                 </td>
                 <td>${warehouse.id }</td>
                 <td>${warehouse.name }</td>
-                <td>$==============================================</td>
+                <td>${warehouse.address}</td>
+                <td>${warehouse.phone}</td>
                 <td>${warehouse.admin }</td>
             </tr>
             </c:forEach>

@@ -16,8 +16,16 @@
     <span id="baseName">${plan.device.name }</span>
     <br />
 
-    <label for="info">检查计划频率</label>
-    <span id="info">${plan.frequency }</span>
+    <label for="frequency">检查计划频率</label>
+    <span id="frequency">${plan.frequency }</span>
+    <br />
+
+    <label for="info">检查计划备注</label>
+    <span id="info">${plan.info }</span>
+    <br />
+
+    <label for="admin">检查计划负责人</label>
+    <span id="admin">${plan.admin }</span>
     <br />
 
     <hr />

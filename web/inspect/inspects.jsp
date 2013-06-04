@@ -19,6 +19,8 @@
                     var params = name.split("&");
                     $("#id").attr("value", params[0]);
                     $("#name").attr("value", params[1]);
+                    $("#type").attr("value", params[2]);
+                    $("#method").attr("value", params[3]);
 
                     $("form").attr("action", "update");
                     $("#form").show();
@@ -30,6 +32,8 @@
 
                 $("#id").attr("value", "");
                 $("#name").attr("value", "");
+                $("#type").attr("value", "");
+                $("#method").attr("value", "");
                 $("form").attr("action", "save");
                 $("#form").show();
             });
@@ -52,6 +56,12 @@
                 <input id="id" name="inspect.id" type="hidden" value="${inspect.id}" />
                 <label for="name">检查项名称</label>
                 <input id="name" type="text" name="inspect.name" value="${inspect.name}" />
+                <br />
+                <label for="type">检查项类别</label>
+                <input id="type" type="text" name="inspect.type" value="${inspect.type}" />
+                <label for="method">检查方法</label>
+                <input id="method" type="text" name="inspect.method" value="${inspect.method}" />
+                <br />
                 <input id="submit" type="submit" value="提交" />
                 <input id="cancel" type="reset" value="取消" />
             </fieldset>
@@ -64,16 +74,20 @@
                 <td>操作</td>
                 <td>id</td>
                 <td>检查项名称</td>
+                <td>检查项类别</td>
+                <td>检查方法</td>
             </tr>
             <c:forEach items="${inspects }" var="inspect">
             <tr>
                 <td>
                     <a href="editInspect" class="editInspect"
-                            name="${inspect.id }&${inspect.name }">编辑</a>
+                            name="${inspect.id }&${inspect.name }&${inspect.name }&${inspect.name }">编辑</a>
                     <a href="delete?id=${inspect.id }" class="delete">删除</a>
                 </td>
                 <td>${inspect.id }</td>
                 <td>${inspect.name }</td>
+                <td>${inspect.type }</td>
+                <td>${inspect.method }</td>
             </tr>
             </c:forEach>
         </table>

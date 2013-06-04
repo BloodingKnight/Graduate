@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="Graduate" default="start" basedir=".">
+<project name="Graduate" default="start" basedir=".">
 
 	<!-- 会用到的一些变量 -->
 	<!-- 一些文件位置 -->
@@ -41,29 +41,29 @@
 		<pathelement location="${tomcat.install.dir}/bin/tomcat-juli.jar" />
 	</path>
 
-	<taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask">
-		<classpath refid="catalina.jar" />
-	</taskdef>
+	<!--<taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask">-->
+		<!--<classpath refid="catalina.jar" />-->
+	<!--</taskdef>-->
 
-	<taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask">
-		<classpath refid="catalina.jar" />
-	</taskdef>
+	<!--<taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask">-->
+		<!--<classpath refid="catalina.jar" />-->
+	<!--</taskdef>-->
 
-	<taskdef name="reload" classname="org.apache.catalina.ant.ReloadTask">
-		<classpath refid="catalina.jar" />
-	</taskdef>
+	<!--<taskdef name="reload" classname="org.apache.catalina.ant.ReloadTask">-->
+		<!--<classpath refid="catalina.jar" />-->
+	<!--</taskdef>-->
 
-	<taskdef name="list" classname="org.apache.catalina.ant.ListTask">
-		<classpath refid="catalina.jar" />
-	</taskdef>
+	<!--<taskdef name="list" classname="org.apache.catalina.ant.ListTask">-->
+		<!--<classpath refid="catalina.jar" />-->
+	<!--</taskdef>-->
 
-	<taskdef name="start" classname="org.apache.catalina.ant.StartTask">
-		<classpath refid="catalina.jar" />
-	</taskdef>
+	<!--<taskdef name="start" classname="org.apache.catalina.ant.StartTask">-->
+		<!--<classpath refid="catalina.jar" />-->
+	<!--</taskdef>-->
 
-	<taskdef name="stop" classname="org.apache.catalina.ant.StopTask">
-		<classpath refid="catalina.jar" />
-	</taskdef>
+	<!--<taskdef name="stop" classname="org.apache.catalina.ant.StopTask">-->
+		<!--<classpath refid="catalina.jar" />-->
+	<!--</taskdef>-->
 
 	<target name="init">
 		<mkdir dir="build/classes" />
@@ -100,37 +100,37 @@
 	</target>
 
 	<!-- 将做好的程序发布到tomcat中去 -->
-	<target name="deploy" depends="war" description="Deploy the project">
-		<deploy url="${tomcat.manager.url}" username="${tomcat.manager.username}"
-			password="${tomcat.manager.password}" path="/${context.path}" 
-			war="file:${dist.dir}/${project.name}.war" update="true" />
-	</target>
+	<!--<target name="deploy" depends="war" description="Deploy the project">-->
+		<!--<deploy url="${tomcat.manager.url}" username="${tomcat.manager.username}"-->
+			<!--password="${tomcat.manager.password}" path="/${context.path}" -->
+			<!--war="file:${dist.dir}/${project.name}.war" update="true" />-->
+	<!--</target>-->
 
-	<target name="undeploy" description="Undeploy the project">
-		<undeploy url="${tomcat.manager.url}" username="${tomcat.manager.username}"
-			password="${tomcat.manager.password}" path="/${context.path}" />
-	</target>
+	<!--<target name="undeploy" description="Undeploy the project">-->
+		<!--<undeploy url="${tomcat.manager.url}" username="${tomcat.manager.username}"-->
+			<!--password="${tomcat.manager.password}" path="/${context.path}" />-->
+	<!--</target>-->
 
-	<target name="list" description="List the deployed projects">
-		<list url="${tomcat.manager.url}" username="${tomcat.manager.username}"
-			password="${tomcat.manager.password}" />
-	</target>
+	<!--<target name="list" description="List the deployed projects">-->
+		<!--<list url="${tomcat.manager.url}" username="${tomcat.manager.username}"-->
+			<!--password="${tomcat.manager.password}" />-->
+	<!--</target>-->
 
-	<target name="start" depends="deploy" description="Start the deployed projects">
-		<start url="${tomcat.manager.url}" username="${tomcat.manager.username}"
-			password="${tomcat.manager.password}" path="/${context.path}" />
-	</target>
+	<!--<target name="start" depends="deploy" description="Start the deployed projects">-->
+		<!--<start url="${tomcat.manager.url}" username="${tomcat.manager.username}"-->
+			<!--password="${tomcat.manager.password}" path="/${context.path}" />-->
+	<!--</target>-->
 
-	<target name="stop" description="Stop the deployed projects">
-		<stop url="${tomcat.manager.url}" username="${tomcat.manager.username}"
-			password="${tomcat.manager.password}" path="/${context.path}" />
-	</target>
+	<!--<target name="stop" description="Stop the deployed projects">-->
+		<!--<stop url="${tomcat.manager.url}" username="${tomcat.manager.username}"-->
+			<!--password="${tomcat.manager.password}" path="/${context.path}" />-->
+	<!--</target>-->
 
-	<!-- 运行项目 -->
-	<target name="run" depends="deploy" description="Run the project">
-		<exec executable="${tomcat.install.dir}/bin/shutdown.sh" />
-		<exec executable="${tomcat.install.dir}/bin/startup.sh" />
-	</target>
+	<!--&lt;!&ndash; 运行项目 &ndash;&gt;-->
+	<!--<target name="run" depends="deploy" description="Run the project">-->
+		<!--<exec executable="${tomcat.install.dir}/bin/shutdown.sh" />-->
+		<!--<exec executable="${tomcat.install.dir}/bin/startup.sh" />-->
+	<!--</target>-->
 
 	<!-- 生成UML图 -->
 	<target name="uml" description="Create the UML Diagram">

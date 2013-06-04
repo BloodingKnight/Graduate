@@ -34,8 +34,8 @@
                 });
             });
 
-            $("#inspects").select2({width: "300px"});
             $("#inspects").val(selected);
+            $("#inspects").select2({width: "300px"});
 
             $("#device").val("${device.id }");
         });
@@ -52,6 +52,14 @@
 
             <label for="frequency">计划检查频率</label>
             <input type="text" name="plan.frequency" value="${plan.frequency }" id="frequency" />
+            <br />
+
+            <label for="info">计划备注</label>
+            <input type="text" name="plan.info" value="${plan.info }" id="info" />
+            <br />
+
+            <label for="frequency">计划负责人</label>
+            <input type="text" name="plan.admin" value="${plan.admin }" id="admin" />
             <br />
         </fieldset>
 

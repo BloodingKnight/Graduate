@@ -28,6 +28,8 @@
     <input id="name" name="device.name" value="${device.name}" type="text" /><br />
     <label for="info">设备信息</label>
     <input id="info" name="device.info" value="${device.info}" type="text" /><br />
+    <label for="info">设备类别</label>
+    <input id="info" name="device.type" value="${device.type}" type="text" /><br />
     <label for="warehouse">所属仓库</label>
     <select id="warehouse" name="device.w_id">
         <c:forEach items="${warehouses }" var="warehouse">

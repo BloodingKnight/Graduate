@@ -11,7 +11,7 @@
 <script type="text/javascript">
     $(function() {
         var operatorsJson = ${null == user.operators ? "1" : user.operators };
-        if (operatorJson != "1") {
+        if (operatorsJson != "1") {
             var selected = new Array();
             $.each(operatorsJson, function(i, val) {
                 selected.push(val.id);

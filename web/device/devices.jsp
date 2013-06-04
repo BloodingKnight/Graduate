@@ -22,6 +22,7 @@
             <tr>
                 <th>id</th>
                 <th>设备名称</th>
+                <th>设备类别</th>
                 <th>设备所属仓库名称</th>
                 <th>操作</th>
             </tr>
@@ -31,6 +32,7 @@
                     <td>
                         <a href="info?id=${device.id }">${device.name }</a>
                     </td>
+                    <td>${device.type}</td>
                     <td>${device.warehouse_name}</td>
                     <td>
                         <a href="edit?id=${device.id}" class="editDevice">编辑</a>

@@ -5,21 +5,27 @@
 <head>
     <meta charset="UTF-8">
     <title>设备详细信息</title>
-
+    <link href="../css/common/style1.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-    <label for="name">设备名称</label>
-    <span id="name">${device.name }</span>
-    <br />
-
-    <label for="baseName">所属仓库名称</label>
-    <span id="baseName">${device.warehouse.name }</span>
-    <br />
-
-    <label for="info">备注</label>
-    <span id="info">${device.info }</span>
-    <br />
-
+    <table class="gridtable">
+        <tr>
+            <td>设备名称</td>
+            <td>${device.name }</td>
+        </tr>
+        <tr>
+            <td>所属仓库名称</td>
+            <td>${device.warehouse.name }</td>
+        </tr>
+        <tr>
+            <td>设备类别</td>
+            <td>${device.type }</td>
+        </tr>
+        <tr>
+            <td>设备备注</td>
+            <td>${device.info }</td>
+        </tr>
+    </table>
     <hr />
 
     <fieldset>

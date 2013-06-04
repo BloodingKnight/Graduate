@@ -23,6 +23,6 @@ public class WarehouseDeleteValidator extends Validator {
 	}
 	
 	protected void handleError(Controller controller) {
-		controller.forwardAction("/inspect");
+		controller.forwardAction("/warehouse");
 	}
 }
