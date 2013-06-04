@@ -27,11 +27,6 @@
 
     <label for="baseName">所属设备名称</label>
     <span id="baseName">${plan.device.name }</span>
-    <br />
-
-    <label for="info">检查计划频率</label>
-    <span id="info">${plan.frequency }</span>
-    <br />
 
     <label for="open">检查报告开始时间</label>
     <span id="open">${report.open }</span>

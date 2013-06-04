@@ -17,6 +17,8 @@
                 <td>id</td>
                 <td>计划名称</td>
                 <td>计划对应设备名</td>
+                <td>计划负责人</td>
+                <td>计划截止日期</td>
             </tr>
             <c:forEach items="${plans }" var="plan">
             <tr>
@@ -25,6 +27,8 @@
                     <a href="info?p_id=${plan.id}">${plan.name }</a>
                 </td>
                 <td>${plan.device.name }</td>
+                <td>${plan.admin }</td>
+                <td>${plan.deadline }</td>
             </tr>
             </c:forEach>
         </table>

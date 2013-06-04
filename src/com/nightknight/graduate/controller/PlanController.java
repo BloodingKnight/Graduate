@@ -10,6 +10,8 @@ import com.nightknight.graduate.model.Device;
 import com.nightknight.graduate.model.Inspect;
 import com.nightknight.graduate.model.Plan;
 
+import java.util.Date;
+
 @Before(OperatorInterceptor.class)
 public class PlanController extends Controller {
 
@@ -19,18 +21,16 @@ public class PlanController extends Controller {
     }
 
     public void add() {
-        setAttr("devices", Device.dao.findAllDevices());
         /**
          * 有可能是从device页面中点击添加计划按钮进入，因此此时会有device绑定
          * 如果参数中有device信息，则传入device的inspects，否则传入第一个device的inspects
          */
-        Integer d_id = getParaToInt("d_id");
-        if (d_id != null) {
-            setAttr("device", Device.dao.findById(d_id));
-            setAttr("inspects", JsonKit.listToJson(Inspect.dao.findByDevice(d_id), 8));
-        } else {
-            setAttr("inspects", JsonKit.listToJson(Inspect.dao.findByFirstDevice(), 8));
-        }
+        Integer d_id = getParaToInt("d_id", 1);
+        Device device = Device.dao.findById(d_id);
+
+        setAttr("devices", Device.dao.findAllDevices());
+        setAttr("device", device);
+        setAttr("inspects", JsonKit.listToJson(device.getInspects(), 8));
 
         render("add.jsp");
     }
@@ -71,13 +71,17 @@ public class PlanController extends Controller {
     public void update() {
         Plan plan = getModel(Plan.class);
 
-        Db.update("delete from plan_inspect where d_id=?", plan.get("id"));
+        Db.update("delete from plan_inspect where p_id=?", plan.get("id"));
+        System.out.println(plan.get("id"));
 
         Integer[] inspects = getParaValuesToInt("inspects");
+        int i = 1;
         for (int inspect : inspects) {
-            Record record = (new Record()).set("p_id", plan.get("id")).set("i_id", inspect);
+            Record record = (new Record()).set("p_id", plan.get("id")).set("i_id", inspect).set("seat", i);
             Db.save("plan_inspect", record);
+            ++i;
         }
+        plan.update();
 
         forwardAction("/plan");
     }

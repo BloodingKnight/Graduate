@@ -4,16 +4,32 @@
 <head>
     <title></title>
     <link rel="stylesheet" type="text/css" href="../css/tools/select2.css" />
+    <link rel="stylesheet" type="text/css" href="../css/tools/jquery-ui-1.10.1.custom.min.css" />
     <script type="text/javascript" src="../js/tools/jquery-1.9.1.js"></script>
-    <%--<script type="text/javascript" src="../js/tools/select2.js"></script>--%>
+    <script type="text/javascript" src="../js/tools/jquery-ui-1.10.1.custom.min.js"></script>
+    <script type="text/javascript" src="../js/tools/select2.js"></script>
     <!-- TODO 需要选择上device相应的inspects -->
     <script type="text/javascript">
         $(function() {
+            // 使用jquery-ui datepick插件
+            $("#start").datepicker({
+                showOn: "button",
+                buttonImage: "../images/calendar.gif",
+                buttonImageOnly: true,
+                dateFormat: "yy-mm-dd"
+            });
+            $("#deadline").datepicker({
+                showOn: "button",
+                buttonImage: "../images/calendar.gif",
+                buttonImageOnly: true,
+                dateFormat: "yy-mm-dd"
+            });
+
             /// 取出后台传来的inspects，并选中
-            var insectsJson = ${null == inspects ? "1" : inspects};
-            if (insectsJson != "1") {
+            var inspectsJson = ${null == inspects ? "1" : inspects};
+            if (inspectsJson != "1") {
                 var selected = new Array();
-                $.each(insectsJson, function(i, val) {
+                $.each(inspectsJson, function(i, val) {
                     $("<option value='" + val.id + "'>" + val.name + "</opiton>").appendTo("#inspects");
                     selected.push(val.id);
                 });
@@ -24,9 +40,10 @@
                 $("#device option:selected").each(function() {
                     var d_id = $(this).attr("value");
                     // 使用ajax取得相应device的inspects
+                    // 清空下拉框
+                    $("#inspects").val("[]");
+                    $("#inspects").select2({width: "300px"});
                     $.get("getDeviceInspects?d_id=" + d_id, function(data) {
-                        // 清空下拉框
-                        $("#inspects").empty();
 
                         $.each(data, function(i, val) {
                             $("<option value='" + val.id + "'>" + val.name + "</option>").appendTo("#inspects");
@@ -45,20 +62,25 @@
 <body>
     <fieldset>
         <legend>基本信息</legend>
+        <input type="hidden" name="plan.id" value="${plan.id}" />
 
         <label for="name">计划名称</label>
         <input type="text" name="plan.name" value="${plan.name }" id="name" />
         <br />
 
-        <label for="frequency">计划检查频率</label>
-        <input type="text" name="plan.frequency" value="${plan.frequency }" id="frequency" />
+        <label for="start">计划开始时间</label>
+        <input type="text" name="plan.start" value="${plan.start }" id="start" />
+        <br />
+
+        <label for="deadline">计划截止日期</label>
+        <input type="text" name="plan.deadline" value="${plan.deadline }" id="deadline" />
         <br />
 
         <label for="info">计划备注</label>
         <input type="text" name="plan.info" value="${plan.info }" id="info" />
         <br />
 
-        <label for="frequency">计划负责人</label>
+        <label for="admin">计划负责人</label>
         <input type="text" name="plan.admin" value="${plan.admin }" id="admin" />
         <br />
     </fieldset>

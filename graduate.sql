@@ -74,26 +74,6 @@ INSERT INTO `inspect`(`name`, `type`, `method`) VALUES ('鼠标积灰', '积灰'
 INSERT INTO `inspect`(`name`, `type`, `method`) VALUES ('cpu速率', '速率', '软件测试')$$
 INSERT INTO `inspect`(`name`, `type`, `method`) VALUES ('内存速率', '速率', '软件测试')$$
 INSERT INTO `inspect`(`name`, `type`, `method`) VALUES ('硬盘速率', '速率', '软件测试')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect1')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect2')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect3')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect4')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect5')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect6')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect7')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect8')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect9')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect10')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect11')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect12')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect13')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect14')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect15')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect16')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect17')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect18')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect19')$$
-# INSERT INTO  `inspect`(`name`) VALUES ('inspect20')$$
 
 -- 设备与检查点的关联（一个设备会有多个检查项，检查项被多个设备共享）
 DROP TABLE IF EXISTS `device_inspect`$$
@@ -108,94 +88,17 @@ CREATE TABLE `device_inspect` (
   CONSTRAINT `device_inspect_d` FOREIGN KEY (`d_id`) REFERENCES `device` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
 
--- 添加device和inspect关联
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (1, 1)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (1, 2)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (1, 3)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (1, 4)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (2, 2)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (2, 3)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (2, 4)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (2, 5)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (3, 3)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (3, 4)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (3, 5)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (3, 6)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (4, 4)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (4, 5)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (4, 6)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (4, 7)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (5, 5)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (5, 6)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (5, 7)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (5, 8)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (6, 6)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (6, 7)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (6, 8)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (6, 9)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (7, 7)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (7, 8)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (7, 9)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (7, 10)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (8, 8)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (8, 9)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (8, 10)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (8, 11)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (9, 9)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (9, 10)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (9, 11)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (9, 12)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (10, 10)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (10, 11)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (10, 12)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (10, 13)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (11, 11)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (11, 12)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (11, 13)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (11, 14)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (12, 12)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (12, 13)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (12, 14)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (12, 15)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (13, 13)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (13, 14)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (13, 15)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (13, 16)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (14, 14)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (14, 15)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (14, 16)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (14, 17)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (15, 15)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (15, 16)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (15, 17)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (15, 18)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (16, 16)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (16, 17)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (16, 18)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (16, 19)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (17, 17)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (17, 18)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (17, 19)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (17, 20)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (18, 18)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (18, 19)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (18, 20)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (18, 1)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (19, 19)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (19, 20)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (19, 1)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (19, 2)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (20, 20)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (20, 1)$$
-# INSERT INTO `device_inspect`(`d_id`, `i_id`) VALUES (20, 2)$$
 
 -- 检查计划
 DROP TABLE IF EXISTS `plan`$$
 CREATE TABLE `plan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
-  -- frequency 是计划执行频率，即时间间隔，故，应该是int
-  `frequency` int(20) NOT NULL,
+#   frequency 是计划执行频率，即时间间隔，故，应该是int
+#   TODO 暂时废弃
+#   `frequency` int(20) NOT NULL,
+  `start` date NOT NULL,
+  `deadline` date NOT NULL,
   `admin` varchar(40) NOT NULL,
   `info` varchar(200),
   `d_id` int(11) NOT NULL,
@@ -204,28 +107,6 @@ CREATE TABLE `plan` (
   -- 一个检查计划对应与一个设备，一个设备可以有多个检查计划
   CONSTRAINT `plan_device` FOREIGN KEY (`d_id`) REFERENCES `device` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
-
--- 添加仓库device数据
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan1', 10, 1)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan2', 10, 1)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan3', 10, 1)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan4', 10, 1)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan5', 10, 1)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan6', 10, 2)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan7', 10, 2)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan8', 10, 2)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan9', 10, 2)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan10', 10, 2)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan11', 10, 3)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan12', 10, 3)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan13', 10, 3)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan14', 10, 3)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan15', 10, 3)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan16', 10, 4)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan17', 10, 4)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan18', 10, 4)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan19', 10, 4)$$
-# INSERT INTO `plan`(`name`, `frequency`, `d_id`) VALUES('plan20', 10, 4)$$
 
 -- 计划与检查点的关联（一个检查计划会有多个检查项，按顺序执行，计划中的检查项来源与设备的检查项）
 DROP TABLE IF EXISTS `plan_inspect`$$
@@ -241,88 +122,6 @@ CREATE TABLE `plan_inspect` (
   CONSTRAINT `plan_inspect_i` FOREIGN KEY (`i_id`) REFERENCES `inspect` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `plan_inspect_p` FOREIGN KEY (`p_id`) REFERENCES `plan` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
-
--- 添加device和inspect关联
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (1, 1, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (1, 2, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (1, 3, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (1, 4, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (2, 2, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (2, 3, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (2, 4, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (2, 5, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (3, 3, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (3, 4, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (3, 5, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (3, 6, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (4, 4, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (4, 5, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (4, 6, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (4, 7, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (5, 5, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (5, 6, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (5, 7, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (5, 8, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (6, 6, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (6, 7, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (6, 8, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (6, 9, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (7, 7, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (7, 8, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (7, 9, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (7, 10, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (8, 8, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (8, 9, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (8, 10, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (8, 11, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (9, 9, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (9, 10, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (9, 11, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (9, 12, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (10, 10, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (10, 11, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (10, 12, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (10, 13, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (11, 11, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (11, 12, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (11, 13, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (11, 14, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (12, 12, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (12, 13, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (12, 14, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (12, 15, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (13, 13, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (13, 14, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (13, 15, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (13, 16, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (14, 14, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (14, 15, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (14, 16, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (14, 17, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (15, 15, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (15, 16, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (15, 17, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (15, 18, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (16, 16, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (16, 17, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (16, 18, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (16, 19, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (17, 17, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (17, 18, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (17, 19, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (17, 20, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (18, 18, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (18, 19, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (18, 20, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (18, 1, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (19, 19, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (19, 20, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (19, 1, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (19, 2, 4)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (20, 20, 1)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (20, 1, 2)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (20, 2, 3)$$
-# INSERT INTO `plan_inspect`(`p_id`, `i_id`, `seat`) VALUES (20, 3, 4)$$
 
 -- 检查报告，每次对设备检查计划执行完之后都会有一个检查报告，由计划中每个检查项的检查结果组成
 DROP TABLE IF EXISTS `report`$$

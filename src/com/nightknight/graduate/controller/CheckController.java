@@ -34,6 +34,9 @@ public class CheckController extends Controller {
         render("plan.jsp");
     }
 
+    /**
+     * 开始一个新的报告
+     */
     @Before(OpenReportValidator.class)
     public void open() {
         Integer p_id = getParaToInt("p_id");
@@ -46,6 +49,9 @@ public class CheckController extends Controller {
         forwardAction("/check/info");
     }
 
+    /**
+     * 进入检查报告
+     */
     public void check() {
         Integer r_id = getParaToInt("r_id");
 
@@ -59,6 +65,9 @@ public class CheckController extends Controller {
         render("check.jsp");
     }
 
+    /**
+     * 进入检查报告中下一项检查，若没有则提示，已关闭
+     */
     @Before(NextInspectValidator.class)
     public void next() {
         Integer r_id = getParaToInt("r_id");
@@ -74,6 +83,9 @@ public class CheckController extends Controller {
         render("inspect.jsp");
     }
 
+    /**
+     * 反馈检查信息
+     */
     public void save() {
         Result result = getModel(Result.class);
 
@@ -86,6 +98,9 @@ public class CheckController extends Controller {
         forwardAction("/check/check");
     }
 
+    /**
+     * 更新检查报告信息
+     */
     public void update() {
         Integer r_id = getParaToInt("r_id");
         String memo = getPara("memo");
@@ -94,5 +109,37 @@ public class CheckController extends Controller {
 
         keepPara("r_id");
         forwardAction("/check/check");
+    }
+
+    /**
+     * 取出今日的检查计划
+     */
+    public void today() {
+        setAttr("plans", Plan.dao.findTodayPlans());
+        render("/check/plans.jsp");
+    }
+
+    /**
+     * 取出过期的检查计划
+     */
+    public void dead() {
+        setAttr("plans", Plan.dao.findDeadPlans());
+        render("/check/plans.jsp");
+    }
+
+    /**
+     * 取出已完成项目
+     */
+    public void finished(){
+        setAttr("plans", Plan.dao.findFinishedPlans());
+        render("/check/plans.jsp");
+    }
+
+    /**
+     * 取出未来的检查计划
+     */
+    public void tomorrow() {
+        setAttr("plans", Plan.dao.findTomorrowPlans());
+        render("/check/plans.jsp");
     }
 }

@@ -16,8 +16,12 @@
     <span id="baseName">${plan.device.name }</span>
     <br />
 
-    <label for="frequency">检查计划频率</label>
-    <span id="frequency">${plan.frequency }</span>
+    <label for="start">检查计划开始时间</label>
+    <span id="start">${plan.start }</span>
+    <br />
+
+    <label for="deadline">检查计划截止日期</label>
+    <span id="deadline">${plan.deadline }</span>
     <br />
 
     <label for="info">检查计划备注</label>
