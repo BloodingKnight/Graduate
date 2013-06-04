@@ -81,7 +81,7 @@
             <tr>
                 <td>
                     <a href="editInspect" class="editInspect"
-                            name="${inspect.id }&${inspect.name }&${inspect.name }&${inspect.name }">编辑</a>
+                            name="${inspect.id }&${inspect.name }&${inspect.type }&${inspect.method }">编辑</a>
                     <a href="delete?id=${inspect.id }" class="delete">删除</a>
                 </td>
                 <td>${inspect.id }</td>

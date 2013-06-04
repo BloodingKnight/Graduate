@@ -155,7 +155,9 @@ document.getElementById('time').innerHTML=ss;
 		document.getElementById("tree").src = "workplatform.html";
 	}
 	$(function() {
-        $("#treeIframe").attr("src", "../include/menus/" + $("#current").attr("name") + ".jsp");
+        if ($("#current") == null) {
+            $("#treeIframe").attr("src", "../include/menus/" + $("#current").attr("name") + ".jsp");
+        }
         $("a.tab").each(function() {
             $(this).click(function(event) {
                 event.preventDefault();
