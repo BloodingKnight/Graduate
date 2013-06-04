@@ -9,6 +9,7 @@ import com.nightknight.graduate.interceptor.OperatorInterceptor;
 import com.nightknight.graduate.model.*;
 import com.nightknight.graduate.validator.NextInspectValidator;
 import com.nightknight.graduate.validator.OpenReportValidator;
+import com.nightknight.graduate.validator.UserExsistsValidator;
 
 import java.sql.Date;
 
@@ -22,7 +23,7 @@ public class UserController extends Controller {
     }
 
     /**
-     * 取出一个plan的信息，并且取出相应的所有report的信息
+     * 取出一个user的信息，并且取出相应的所有operator的信息
      */
     public void infoUser() {
         Integer u_id = getParaToInt("u_id");
@@ -55,16 +56,18 @@ public class UserController extends Controller {
         forwardAction("/user");
     }
 
+    @Before(UserExsistsValidator.class)
     public void saveUser() {
-        User user = getModel(User.class);
+        User user = getModel(User.class).set("password", "111111");
         user.save();
 
         Integer[] operators = getParaValuesToInt("operators");
-        for (int op : operators) {
-            Record record = new Record().set("u_id", user.get("id")).set("o_id", op);
-            Db.save("userinfo_operator", record);
+        if (operators != null) {
+            for (int op : operators) {
+                Record record = new Record().set("u_id", user.get("id")).set("o_id", op);
+                Db.save("userinfo_operator", record);
+            }
         }
-
         forwardAction("/user");
     }
 
@@ -73,9 +76,11 @@ public class UserController extends Controller {
 
         Db.update("delete from userinfo_operator where u_id=?", user.get("id"));
         Integer[] operators = getParaValuesToInt("operators");
-        for (int op : operators) {
-            Record record = new Record().set("u_id", user.get("id")).set("o_id", op);
-            Db.save("userinfo_operator", record);
+        if (operators != null) {
+            for (int op : operators) {
+                Record record = new Record().set("u_id", user.get("id")).set("o_id", op);
+                Db.save("userinfo_operator", record);
+            }
         }
         user.update();
 

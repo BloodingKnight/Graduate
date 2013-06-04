@@ -5,6 +5,7 @@
 </head>
 <body>
 <form action="saveUser" method="post">
+    <span style="color: red">${userExsists}</span>
     <%@include file="_form.jsp"%>
 </form>
 </body>

@@ -37,56 +37,6 @@
 
 <script type="text/javascript">
 
-window.onLoad = new function(){
-//	loadRealname();
-//	checkTime();
-// setInterval("checkTime()",30000);
-}
-
-function checkTime(){
-	
-	var url= "${ctx}/MessageAction/checkNewMessage.action" ;
-	
-	jQuery.post(url,{},callback,"json");
-	
-	function callback(json){  
-	if(json.messageCount!=0){
-		$("#mes").attr("innerHTML","您有新消息！");
-		setInterval("zhuan()",500);
-    }else{
-    	$("#mes").attr("innerHTML","");
-    }
-}
-}
-
-function viewReceiveMessage(){
-	var URL = "${ctx}/message/initReceiveMessage.action";
-	window.parent.frames['contextIframe'].location = URL;
-}
-
-function zhuan(){
-	if($("#mes").html()==""){
-		$("#mes").attr("innerHTML","您有新消息！");
-	}else{
-		$("#mes").attr("innerHTML","");
-	}
-}
-jQuery(function(){
-	var url = "findFun.action";
-	$("li[id='selectFun']").each(
-			function(){
-			var data="selectFun="+$(this).attr("class");
-			var select=$(this);
-			jQuery.post(url, data, callback, "json");
-			function callback(json) {
-				var sdf=json.display;
-				if(sdf=="")
-					select.removeAttr("style");
-				else
-					select.attr("style",json.display);
-				}
-});});
-
 function ShowTime() {  
 <%Date date = new Date();
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd");
@@ -118,18 +68,6 @@ String ss = sdf.format(date).toString()+xq;
 var ss ="<%=ss%>";
 <%--document.getElementById('time').innerHTML=ss.toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());--%>
 document.getElementById('time').innerHTML=ss;
-}  
-
-
-function loadRealname(){
-	
-	var url= "${ctx}/loginRealName.action" ;
-	
-	jQuery.post(url,{},callback,"json");
-	
-	function callback(json){  
-		$("#realname").attr("innerHTML",json.realname);
-}
 }
 </script>
 
